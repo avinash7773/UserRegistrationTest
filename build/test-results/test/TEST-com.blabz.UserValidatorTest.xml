@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.blabz.UserValidatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-18T05:28:07" hostname="DESKTOP-0332C2L" time="0.03">
+  <properties/>
+  <testcase name="testValidFirstName()" classname="com.blabz.UserValidatorTest" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
