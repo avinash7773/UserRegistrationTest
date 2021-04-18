@@ -8,6 +8,7 @@ public class UserValidator {
     private final String NAME_PATTERN = "[A-Z][a-z]{2,}";
     private final String PHONE_NUMBER_PATTERN = "(0|91)?[7-9][0-9]{9}";
     private final String EMAIL_PATTERN = "[A-Za-z0-9]{1,}@[A-Z,a-z]{1,}[.]com";
+    private final String PASSWORD_PATTERN = "^(?=.*\\d)([a-z])*(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$";
 
     //@method validateFirstName Check the pattern for first name
 
@@ -37,6 +38,13 @@ public class UserValidator {
     public boolean validateEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
+        boolean result = matcher.matches();
+        return result;
+    }
+
+    public boolean validatePassword(String password) {
+        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher = pattern.matcher(password);
         boolean result = matcher.matches();
         return result;
     }
