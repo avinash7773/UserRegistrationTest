@@ -7,11 +7,20 @@ public class UserValidator {
 
     private final String NAME_PATTERN = "[A-Z][a-z]{2,}";
 
+
     //@method validateFirstName Check the pattern for first name
 
     public boolean validateFirstName(String firstName) {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(firstName);
+        boolean result = matcher.matches();
+        return result;
+    }
+
+    //@method validLastName Check the pattern for last name
+    public boolean validateLastName(String lastName) {
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        Matcher matcher = pattern.matcher(lastName);
         boolean result = matcher.matches();
         return result;
     }
