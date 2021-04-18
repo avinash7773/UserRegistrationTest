@@ -1,13 +1,16 @@
 package com.blabz;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.regex.*;
+import java.util.List;
 
 public class UserValidator {
     //@pattern NAME_PATTERN contain the correct pattern for First name
 
     private final String NAME_PATTERN = "[A-Z][a-z]{2,}";
     private final String PHONE_NUMBER_PATTERN = "(0|91)?[7-9][0-9]{9}";
-    private final String EMAIL_PATTERN = "[A-Za-z0-9]{1,}@[A-Z,a-z]{1,}[.]com";
+    private final String EMAIL_PATTERN =  "^[A-Za-z0-9]+([._%+-]?[a-z0-9])*@[A-Za-z0-9-]+(\\.[a-zA-Z]{2,})(\\.[A-Za-z]{2,})?$";
     private final String PASSWORD_PATTERN = "^(?=.*\\d)([a-z])*(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$";
 
     //@method validateFirstName Check the pattern for first name
@@ -48,6 +51,10 @@ public class UserValidator {
         boolean result = matcher.matches();
         return result;
     }
+
+
+
+
 }
 
 
