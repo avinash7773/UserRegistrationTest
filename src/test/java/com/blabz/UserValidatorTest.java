@@ -38,7 +38,7 @@ public class UserValidatorTest{
     }
 
     @Test
-    public void testValidPassword() {
+    public void testValidEmails() {
         UserValidator userValidator = new UserValidator();
         boolean result = userValidator.validatePassword("Ahi@5714");
         Assert.assertEquals(true, result);
