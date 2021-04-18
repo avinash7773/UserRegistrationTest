@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.blabz.UserValidatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-18T06:36:05" hostname="DESKTOP-0332C2L" time="0.027">
+<testsuite name="com.blabz.UserValidatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-18T06:46:41" hostname="DESKTOP-0332C2L" time="0.031">
   <properties/>
-  <testcase name="testValidLastName()" classname="com.blabz.UserValidatorTest" time="0.022"/>
+  <testcase name="testValidLastName()" classname="com.blabz.UserValidatorTest" time="0.025"/>
+  <testcase name="testValidPhoneNumber()" classname="com.blabz.UserValidatorTest" time="0.0"/>
   <testcase name="testValidFirstName()" classname="com.blabz.UserValidatorTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

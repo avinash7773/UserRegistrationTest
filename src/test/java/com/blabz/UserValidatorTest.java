@@ -19,7 +19,14 @@ public class UserValidatorTest{
     @Test
     public void testValidLastName() {
         UserValidator userValidator = new UserValidator();
-        boolean result = userValidator.validateFirstName("Jadhav");
+        boolean result = userValidator.validateLastName("Jadhav");
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void testValidPhoneNumber() {
+        UserValidator userValidator = new UserValidator();
+        boolean result = userValidator.validatePhoneNumber("7773973493");
         Assert.assertEquals(true, result);
     }
 }
