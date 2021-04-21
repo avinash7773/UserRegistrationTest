@@ -1,4 +1,2 @@
 com/blabz/UserValidatorTest.java
  com.blabz.UserValidatorTest
-com/blabz/EmailValidateTest.java
- com.blabz.EmailValidateTest

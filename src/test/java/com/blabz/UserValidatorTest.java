@@ -13,69 +13,57 @@ public class UserValidatorTest {
     // @testValidFirstname is used for test firstUnit case
 
     @Test
-    public void testValidFirstName() {
+    public void testValidFirstName() throws UserValidatorException {
         UserValidator userValidator = new UserValidator();
-        boolean result = userValidator.validateFirstName("Avinash");
-        Assertions.assertTrue(result);
-    }
+        try {
+            userValidator.validateFirstName("Avi");
+        } catch (UserValidatorException e) {
+            Assert.assertEquals("Please enter valid firstName", e.getMessage());
 
-
-    @Test
-    public void testValidLastName() {
-        UserValidator userValidator = new UserValidator();
-        boolean result = userValidator.validateLastName("Jadhav");
-        Assert.assertEquals(true, result);
-    }
-
-    @Test
-    public void testValidPhoneNumber() {
-        UserValidator userValidator = new UserValidator();
-        boolean result = userValidator.validatePhoneNumber("7773973493");
-        Assert.assertEquals(true, result);
-    }
-
-    public static java.util.List inputFirst() {
-        java.util.List list = new ArrayList();
-        list.add(new Object[]{"javinash228@gmail.com",true});
-       list.add(new Object[] {"abc-100@yahoo.com",true});
-        list.add(new Object[]{"abc.100@yahoo.com",true});
-        list.add(new Object[] {"abc111@abc.com",true});
-        list.add(new Object[] {"abc-100@abc.net", false});
-        list.add(new Object[]{"abc.100@abc.com.au", true});
-        list.add(new Object[]{"abc@1.com", true});
-        list.add(new Object[]{"abc@gmail.com.com", true});
-        list.add(new Object[]{"abc+100@gmail.com", true});
-        list.add(new Object[]{"abc", false});
-        list.add(new Object[]{" abc@.com.my ", false});
-        list.add(new Object[]{"abc123@gmail.a", false});//
-        list.add(new Object[]{"abc123@.com", false});
-        list.add(new Object[]{"abc123@.com.com", false});
-        list.add(new Object[]{".abc@abc.com ", false});
-        list.add(new Object[]{"abc()*@gmail.com", false});
-        list.add(new Object[]{"abc@%*.com", false});
-        list.add(new Object[]{"abc..2002@gmail.com ", false});
-        list.add(new Object[]{"abc.@gmail.com", false});
-        list.add(new Object[]{"abc@abc@gmail.com", false});
-        list.add(new Object[]{"abc@gmail.com.1a", false});
-        list.add(new Object[]{"abc@gmail.com.aa.au", false});
-        return list;
-    }
-
-    @Test
-    public void testValidEmail() {
-        UserValidator userValidator = new UserValidator();
-       Iterator iterator = inputFirst().listIterator();
-        while (iterator.hasNext()) {
-            boolean result = userValidator.validateEmail((String) iterator.next());
-            Assert.assertEquals(true, result);
         }
     }
 
     @Test
-    public void testValidPassword() {
+    public void testValidLastName() throws UserValidatorException {
         UserValidator userValidator = new UserValidator();
-        boolean result = userValidator.validatePassword("Ahi@5714");
-        Assert.assertEquals(true, result);
+        try {
+            userValidator.validateLastName("jadhav");
+        } catch (UserValidatorException e) {
+            Assert.assertEquals("Please enter valid lastName", e.getMessage());
+
+        }
     }
 
+    @Test
+    public void testValidPhoneNumber() throws UserValidatorException {
+        UserValidator userValidator = new UserValidator();
+        try {
+            userValidator.validatePhoneNumber("7773973493");
+        } catch (UserValidatorException e) {
+            Assert.assertEquals("Please enter valid PhoneNumber", e.getMessage());
+
+        }
+    }
+
+    @Test
+    public void testValidPassword() throws UserValidatorException {
+        UserValidator userValidator = new UserValidator();
+        try {
+            userValidator.validatePassword("Svaghj@ag2");
+        } catch (UserValidatorException e) {
+            Assert.assertEquals("Please enter valid Password", e.getMessage());
+
+        }
+    }
+
+    @Test
+    public void testValidEmail() throws UserValidatorException {
+        UserValidator userValidator = new UserValidator();
+        try {
+            userValidator.validateEmail("javinash228@gmail,com");
+        } catch (UserValidatorException e) {
+            Assert.assertEquals("Please enter valid Email", e.getMessage());
+
+        }
+    }
 }

@@ -1,2 +1,4 @@
+com/blabz/UserValidatorException.java
+ com.blabz.UserValidatorException
 com/blabz/UserValidator.java
  com.blabz.UserValidator
