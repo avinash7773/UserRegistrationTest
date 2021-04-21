@@ -1,86 +1,66 @@
 package com.blabz;
 
 import java.util.Scanner;
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 public class UserValidator {
 
-    private final String NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
-    private final String PHONE_NUMBER_PATTERN = "(0|91)?[7-9][0-9]{9}";
-    private final String EMAIL_PATTERN =  "^[A-Za-z0-9]+([._%+-]?[a-z0-9])*@[A-Za-z0-9-]+(\\.[a-zA-Z]{2,})(\\.[A-Za-z]{2,})?$";
-    private final String PASSWORD_PATTERN = "^(?=.*\\d)([a-z])*(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$";
+    /*Main function methods from UserRegistration*/
+    public static void main(String[] arg) throws UserValidatorException {
+        /*Regex pattern for firstNamePattern, lastNamePattern, emailPattern, mobilePattern, paswordPattern*/
+        String firstNamePattern = "^[A-Z]{1}[a-z]{2,}";
+        String lastNamePattern = "^[A-Z]{1}[a-z]{2,}";
+        String emailPattern ="^[A-Za-z0-9]+([._%+-]?[a-z0-9])*@[A-Za-z0-9-]+(\\.[a-zA-Z]{2,})(\\.[A-Za-z]{2,})?$";
+        String mobilePattern = "(0|91)?[7-9]{1}[0-9]{9}";
+        String passwordPattern = "^(?=.*\\d)([a-z])*(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$";
 
-    public static void main(String[] args) throws UserValidatorException {
-        UserValidator userValidator1 = new UserValidator();
-        System.out.println("Enter firstName=");
-        Scanner scobj1 = new Scanner(System.in);
-        String firstName = scobj1.nextLine();
-        userValidator1.validateFirstName(firstName);
+        Scanner scanner = new Scanner(System.in);
+        /*Lambda function implementation to check pattern matches with input Returns boolean */
+        Ivalidator userRegistration = (pattern, input) ->{
+            boolean result = Pattern.matches(pattern, input);
+            return result;
+        };
 
-        System.out.println("Enter lastName=");
-        Scanner scobj2 = new Scanner(System.in);
-        String lastName = scobj2.nextLine();
-        userValidator1.validateLastName(lastName);
+        /*Take first name and check for exception to throw custom exception*/
+        System.out.println("Enter First Name=");
+        String first_name = scanner.nextLine();
+        if(!userRegistration.validateInput(firstNamePattern, first_name)){
+            throw new UserValidatorException("not valid input");
+        }
+        System.out.println("firstname :" + first_name);
 
-        System.out.println("Enter PhoneNumber=");
-        Scanner scobj3 = new Scanner(System.in);
-        String phoneNumber = scobj2.nextLine();
-        userValidator1.validatePhoneNumber(phoneNumber);
+        /*Take last_name and check for exception to throw custom exception*/
+        System.out.println("Enter Last Name=");
+        String last_name = scanner.nextLine();
+        if(!userRegistration.validateInput(lastNamePattern, last_name)){
+            throw new UserValidatorException("not valid input");
+        }
+        System.out.println("lastname :" + last_name);
 
-        System.out.println("Enter password=");
-        Scanner scobj4 = new Scanner(System.in);
-        String password = scobj4.nextLine();
-        userValidator1.validatePassword(password);
-
+        /*Take email and check for exception to throw custom exception*/
         System.out.println("Enter Email=");
-        Scanner scobj5 = new Scanner(System.in);
-        String email = scobj5.nextLine();
-        userValidator1.validateEmail(email);
-    }
-    //@method validateFirstName Check the pattern for first name
-    public  boolean validateFirstName(String firstNme) throws  UserValidatorException {
-        if(!Pattern.matches(NAME_PATTERN,firstNme)) {
-            throw new UserValidatorException("Please enter valid firstName");
+        String email = scanner.nextLine();
+        if(!userRegistration.validateInput(emailPattern, email)){
+            throw new UserValidatorException("not valid input");
         }
-        else
-            return true;
+        System.out.println("email :" + email);
+
+        /*Take mobileNumber and check for exception to throw custom exception*/
+        System.out.println("Enter Mobile Number=");
+        String mobileNumber = scanner.nextLine();
+        if(!userRegistration.validateInput(mobilePattern, mobileNumber)){
+            throw new UserValidatorException("not valid input");
+        }
+        System.out.println("Mobile_Number :" + mobileNumber);
+
+        /*Take password and check for exception to throw custom exception*/
+        System.out.println("Enter Password =");
+        String password = scanner.nextLine();
+        if(!userRegistration.validateInput(passwordPattern, password)){
+            throw new UserValidatorException("not valid input");
+        }
+        System.out.println("Password :" + password);
+
     }
 
-    //@method validLastname Check the pattern for last name
-    public  boolean validateLastName(String lastNme) throws  UserValidatorException {
-        if(!Pattern.matches(NAME_PATTERN,lastNme)) {
-            throw new UserValidatorException("Please enter valid lastName");
-        }
-        else
-            return true;
-    }
-
-   // @method validdatePhoneNumber check for phoneNumber
-    public  boolean validatePhoneNumber(String phoneNumber) throws  UserValidatorException {
-        if(!Pattern.matches(PHONE_NUMBER_PATTERN,phoneNumber)) {
-            throw new UserValidatorException("Please enter valid PhoneNumber");
-        }
-        else
-            return true;
-    }
-
-    // @method validatePassword check for password
-    public  boolean validatePassword(String password) throws  UserValidatorException {
-        if(!Pattern.matches(PASSWORD_PATTERN,password)) {
-            throw new UserValidatorException("Please enter valid Password");
-        }
-        else
-            return true;
-    }
-
-    // @method validateEmail check for Email
-    public  boolean validateEmail(String email) throws  UserValidatorException {
-        if(!Pattern.matches(EMAIL_PATTERN,email)) {
-            throw new UserValidatorException("Please enter valid Email");
-        }
-        else
-            return true;
-    }
 }
-
-
